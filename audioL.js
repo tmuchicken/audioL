@@ -220,6 +220,7 @@ $('#random').click(function () {
     getpeerid(null);
 });
 
+
 //イベント id取得後じゃないと動作しない
 function start() {
     //openイベント
@@ -246,8 +247,8 @@ function start() {
     });
 
     //着信処理
-    peer.on('call', function (call) {
-        call.answer(localStream, { videoCodec: VIDEO_CODEC });
+    peer.on('call', function(call){
+        call.answer(localStream1);
         setupCallEventHandlers(call);
     });
 }
@@ -282,10 +283,7 @@ $('#end-call').click(function(){
     existingCall.close();
 });
 
-peer.on('call', function(call){
-    call.answer(localStream1);
-    setupCallEventHandlers(call);
-});
+
 /////////////////////
 
 
