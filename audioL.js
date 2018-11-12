@@ -220,6 +220,38 @@ $('#random').click(function () {
     getpeerid(null);
 });
 
+//イベント id取得後じゃないと動作しない
+function start() {
+    //openイベント
+    peer.on('open', function () {
+        $('#my-id').text(peer.id);
+    });
+
+    //errorイベント
+    peer.on('error', function (err) {
+        alert(err.message);
+        setupMakeCallUI();
+    });
+
+    //closeイベント
+    peer.on('close', function () {
+        alert(err.message);
+        setupMakeCallUI();
+    });
+
+    //disconnectedイベント
+    peer.on('disconnected', function () {
+        alert(err.message);
+        setupMakeCallUI();
+    });
+
+    //着信処理
+    peer.on('call', function (call) {
+        call.answer(localStream, { videoCodec: VIDEO_CODEC });
+        setupCallEventHandlers(call);
+    });
+}
+
 
 /*
 ///////////////open,error,close,disconnectedイベント
