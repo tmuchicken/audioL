@@ -318,7 +318,6 @@ function addVideo(call,stream){
 
 function removeVideo(peerId){
     $('#'+peerId).remove();
-    alert("つながったようです。");
 }
 
 function setupMakeCallUI(){
