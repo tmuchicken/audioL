@@ -295,6 +295,9 @@ function setupCallEventHandlers(call){
 
     existingCall = call;
 
+    
+    setupEndCallUI(call);
+
     call.on('stream', function(stream){
         addVideo(call,stream);
         setupEndCallUI();
@@ -326,21 +329,6 @@ function setupMakeCallUI(){
 function setupEndCallUI() {
     $('#make-call').hide();
     $('#end-call').show();
-}
-//////////////////////////////////////
-
-
-//ボタンの表示
-function setupMakeCallUI() {
-    $('#make-call').show();
-    $('#end-call-ui').hide();
-}
-
-
-
-//ボタン非表示切り替え
-function setupEndCallUI(call) {
-    $('#make-call').hide();
-    $('#end-call-ui').show();
     $('#their-id').text(call.remoteId);
 }
+//////////////////////////////////////
